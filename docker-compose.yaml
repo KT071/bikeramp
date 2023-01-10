@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  app:
+    container_name: bikeramp_app
+    image: bikeramp_node:bikeramp_16.13.0
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '8080:3000'
+    volumes:
+      - .:/usr/src/app
+    dns:
+      - 8.8.8.8
+
+  postgres:
+    container_name: bikeramp_postgres
+    image: postgres:12.3
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=bikeramp
+
+volumes:
+  node_modules:
