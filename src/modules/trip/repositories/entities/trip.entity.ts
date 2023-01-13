@@ -23,7 +23,7 @@ export class Trip {
   price: number;
 
   @Column({ type: 'date' })
-  date: string;
+  date: Date;
 
   @CreateDateColumn()
   createdAt: Date;

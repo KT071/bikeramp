@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TripModule } from './modules/trip/trip.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ReportsModule } from './modules/reports/reports.module';
 
 import CONFIG from './config';
 import { Trip } from './modules/trip/repositories/entities';
@@ -18,6 +19,7 @@ import { Trip } from './modules/trip/repositories/entities';
       entities: [Trip],
       synchronize: true,
     }),
+    ReportsModule,
   ],
   controllers: [],
   providers: [],
